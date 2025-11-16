@@ -1,0 +1,45 @@
+body{background:#0b0e12;color:#e8eef6;font-family:sans-serif;}
+
+body {
+  /* logo jako tło strony */
+  background-image: url("/logo.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;      /* nie przesuwa się przy scrollu */
+  background-size: cover;            /* wypełnia całą stronę */
+
+  /* żeby treść była czytelna */
+  color: #ffffff;
+}
+
+/* Opcjonalnie półprzezroczysta warstwa pod treścią */
+.main-container {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+
+
+
+/* tło z logo na całej stronie */
+body {
+  background-image: url("/logo.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #e8eef6;
+}
+
+/* delikatne przyciemnienie pod panelem, żeby było czytelne */
+.main-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 10px;
+}

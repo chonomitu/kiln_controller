@@ -1,0 +1,48 @@
+
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KilnCtrl – Panel</title><link rel="stylesheet" href="/style.css">
+<body>
+<header>
+  <h1>Kiln Controller</h1>
+  <div class="status">
+    <span id="heatInd" class="pill off">OFF</span>
+    <span class="pill">T: <b id="tNow">—</b>°C</span>
+    <span class="pill">S: <b id="sNow">—</b>°C</span>
+    <span class="pill">Out: <b id="oNow">—</b>%</span>
+    <span class="pill">Max: <b id="maxNow">—</b>°C</span>
+  </div>
+  <nav class="toolbar">
+    <button id="btnStart">START</button>
+    <button id="btnStop">STOP</button>
+    <a class="btn" href="/config">Konfiguracja</a>
+  </nav>
+</header>
+
+<section class="card">
+  <div class="row">
+    <div><label>Tryb</label>
+      <select id="mode"><option value="0">Dynamiczny</option><option value="1">Profil etapowy</option></select>
+    </div>
+    <div id="setpointBox">
+      <label>Setpoint [°C]</label><input id="setpoint" type="number" step="1" min="0" max="1200">
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <canvas id="chart" height="240"></canvas>
+  <small>Temp (linia, °C – lewa) / Duty (słupki, % – prawa). X: próbki (co <span id="sampleNow">—</span>s).</small>
+</section>
+
+<section class="card">
+  <h3>Profil grzania</h3>
+  <div id="steps"></div>
+  <div class="row">
+    <button id="addStep">+ Etap</button>
+    <button id="saveProfile">Zapisz profil</button>
+    <input id="profName" placeholder="Nazwa profilu">
+    <button id="loadProfile">Wczytaj</button>
+  </div>
+</section>
+
+<script src="/app.js"></script></body>

@@ -1,0 +1,18 @@
+# Arduino / PlatformIO / build
+.pio/
+.vscode/
+build/
+libdeps/
+.pioenvs/
+.piolibdeps/
+
+# Pliki wynikowe
+*.bin
+*.elf
+*.hex
+*.map
+
+# Inne śmieci
+*.log
+*.zip
+*.tmp

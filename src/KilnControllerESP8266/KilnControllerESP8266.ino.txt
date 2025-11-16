@@ -1,0 +1,37 @@
+
+/***************************************************************************************
+ * FILE: src/KilnControllerESP8266.ino
+ * DESC: Główny szkic – inicjalizacja i pętla
+ * LAST MODIFIED: 2025-11-09 03:55 (Europe/Warsaw)
+ ***************************************************************************************/
+#include <Arduino.h>
+#include "config.h"
+#include "storage.h"
+#include "display.h"
+#include "control.h"
+#include "webserver.h"
+#include "network.h"
+
+void setup(){
+  Serial.begin(115200);
+  delay(50);
+  Serial.println();
+  Serial.println(F("=== KilnControllerESP8266 boot ==="));
+
+  fsBegin();               // LittleFS
+  cfgLoadOrDefault();      // wczytaj /config.json lub domyślne
+  pinsAndBusesInit();      // I2C (D5/D6), SPI-soft dla MAX31865, SSR/LED/Buzzer
+  displayInit();           // OLED autodetekcja 0x3C/0x3D
+  controlInit();           // PID + okno SSR + profil engine
+  netInit();               // WiFi (AP + opcjonalnie STA), MQTT opcjonalnie
+  webInit();               // serwer HTTP i trasy, serveStatic z LittleFS
+
+  Serial.println(F("[OK] setup complete"));
+}
+
+void loop(){
+  netLoop();       // DNS captive, MQTT, itp.
+  webLoop();       // obsługa HTTP
+  controlLoop();   // pomiar, PID.Compute(), SSR okno, profil, sampling
+  displayLoop();   // rysowanie OLED ~4 FPS
+}

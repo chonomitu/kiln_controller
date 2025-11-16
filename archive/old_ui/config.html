@@ -1,0 +1,57 @@
+
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KilnCtrl – Konfiguracja</title><link rel="stylesheet" href="/style.css">
+<body>
+<header><h1>Konfiguracja</h1><nav class="toolbar"><a class="btn" href="/">← Panel</a></nav></header>
+
+<section class="card">
+  <h3>Piny</h3>
+  <p class="muted">OLED I2C domyślnie <b>D5/D6</b>. MAX31865 na soft‑SPI.</p>
+  <div class="grid">
+    <div><label>SSR</label><select id="pSSR"></select></div>
+    <div><label>Buzzer</label><select id="pBUZZ"></select></div>
+    <div><label>LED</label><select id="pLED"></select></div>
+    <div><label>BtnA</label><select id="pBA"></select></div>
+    <div><label>BtnB</label><select id="pBB"></select></div>
+    <div><label>I2C SDA</label><select id="pSDA"></select></div>
+    <div><label>I2C SCL</label><select id="pSCL"></select></div>
+    <div><label>SPI CS</label><select id="pCS"></select></div>
+    <div><label>SPI MOSI</label><select id="pMOSI"></select></div>
+    <div><label>SPI MISO</label><select id="pMISO"></select></div>
+    <div><label>SPI SCK</label><select id="pSCK"></select></div>
+  </div>
+  <button id="savePins">Zapisz & Reinit</button>
+</section>
+
+<section class="card">
+  <h3>PID / Sampling / Safety</h3>
+  <div class="grid">
+    <div><label>Kp</label><input id="kp" type="number" step="0.1"></div>
+    <div><label>Ki</label><input id="ki" type="number" step="0.01"></div>
+    <div><label>Kd</label><input id="kd" type="number" step="0.1"></div>
+    <div><label>Okno SSR [ms]</label><input id="win" type="number" step="50"></div>
+    <div><label>Próbka [s]</label><input id="samp" type="number" step="60"></div>
+    <div><label>Max temp [°C]</label><input id="maxT" type="number" step="1"></div>
+  </div>
+  <button id="savePID">Zapisz</button>
+</section>
+
+<section class="card">
+  <h3>Sieć (opcjonalnie)</h3>
+  <div class="grid">
+    <div><label>STA enabled</label><input id="staEn" type="checkbox"></div>
+    <div><label>SSID</label><input id="staSsid"></div>
+    <div><label>PASS</label><input id="staPass" type="password"></div>
+  </div>
+  <h3>MQTT (opcjonalnie)</h3>
+  <div class="grid">
+    <div><label>MQTT enabled</label><input id="mqEn" type="checkbox"></div>
+    <div><label>Host</label><input id="mqHost"></div>
+    <div><label>Port</label><input id="mqPort" type="number" value="1883"></div>
+    <div><label>User</label><input id="mqUser"></div>
+    <div><label>Pass</label><input id="mqPass" type="password"></div>
+    <div><label>Base topic</label><input id="mqBase" value="kiln"></div>
+  </div>
+</section>
+
+<script src="/app.js"></script></body>
